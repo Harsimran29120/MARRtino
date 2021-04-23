@@ -17898,7 +17898,7 @@ ul {
   .square::before {
     position: absolute;
     content: '';
-    height: 25rem;
+    height: 20rem;
     width: 25rem;
     border-radius: 3.8125rem;
     z-index: -1 !important;
