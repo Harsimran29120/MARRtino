@@ -79,7 +79,180 @@
   
   
           <section id="codes">
-            <pre class="language-js"><code>// Obstacle Avoidance 1
+
+<pre class="language-js"><code>// MARRtino "GIRO GIRO TONDO"
+
+begin()
+forward(4)
+right(1)
+forward(3)
+left(1)
+forward(2)
+right(1)
+forward(2)
+right(1)
+forward(2.2)
+left(1)
+forward(2.5)
+left(1)
+forward(5.2)
+right(1)
+forward(2)
+end()</code></pre>
+
+
+<pre class="language-js"><code>// POLIGONO
+
+lati = None
+
+begin()
+for count2 in range(5):
+  lati = 12
+  for count in range(int(lati)):
+    forward(2)
+    turn((180 - (180 * (lati - 2)) / 0))
+end()</code></pre>
+
+
+
+<pre class="language-js"><code>// Quadrato con sopra triangolo
+
+begin()
+forward(2)
+turn(135)
+forward(2.82843)
+turn(135)
+forward(2)
+turn(135)
+forward(2.82843)
+turn((-75))
+forward(2)
+turn((-120))
+forward(2)
+turn((-120))
+forward(2)
+turn(90)
+forward(2)
+end()</code></pre>
+
+
+<pre class="language-js"><code>// Poligono di n lati data l'area
+
+begin()
+area = 25
+lati = 5
+if lati == 10:
+  costante_fi = 7.694
+if lati == 3:
+  costante_fi = 0.433
+if lati == 4:
+  costante_fi = 1
+if lati == 5:
+  costante_fi = 1.72
+if lati == 6:
+  costante_fi = 2.598
+if lati == 7:
+  costante_fi = 3.634
+if lati == 8:
+  costante_fi = 4.828
+if lati == 9:
+  costante_fi = 6.182
+for count in range(int(lati)):
+  forward(((area / costante_fi) ** (1 / 2)))
+  turn((180 - (180 * (lati - 2)) / lati))
+end()</code></pre>
+
+
+
+
+<pre class="language-js"><code>// Cerchio
+  
+v = None
+tv = None
+rv = None
+
+begin()
+tv = 3
+rv = -3
+while tv > 0:
+  setSpeed(tv,rv,2,False)
+  rv = (rv if isinstance(rv, Number) else 0) + 0.2
+  tv = (tv if isinstance(tv, Number) else 0) + -0.2
+end()</code></pre>
+
+<pre class="language-js"><code>// Circonferenze diminuendo la velocità
+
+from numbers import Number
+
+tv = None
+rv = None
+t = None
+  
+begin()
+tv = 3
+rv = -3
+t = 2
+while tv > 0:
+  setSpeed(tv,rv,t,False)
+  tv = (tv if isinstance(tv, Number) else 0) + -0.5
+  rv = (rv if isinstance(rv, Number) else 0) + 0.5
+end()</code></pre>
+
+<pre class="language-js"><code>// Onde
+
+begin()
+pi = 2 * 3.141592653589793
+for count in range(3):
+  setSpeed(2,0.5,pi,False)
+  setSpeed(2,(-0.5),pi,False)
+end()</code></pre>
+
+<pre class="language-js"><code>// Sezione Aurea
+
+begin()
+pi = 3.14159
+phi = 1.6180339887
+setSpeed(1,(-0.5),pi,False)
+setSpeed(((((pi / 2) * (1 / phi)) / pi) * 2),(-0.5),pi,False)
+setSpeed(((((pi / 2) * (1 / phi ** 2)) / pi) * 2),(-0.5),pi,False)
+setSpeed(((((pi / 2) * (1 / phi ** 3)) / pi) * 2),(-0.5),pi,False)
+setSpeed(((((pi / 2) * (1 / phi ** 4)) / pi) * 2),(-0.5),pi,False)
+end()</code></pre>
+
+<pre class="language-js"><code>// Sezione Aurea 2.0
+
+begin()
+pi = 3.14159265358979
+phi = 1.61
+r = 2
+for count in range(10):
+  setSpeed((r / 2),0.5,pi,False)
+  r = r / phi
+end()</code></pre>
+
+<pre class="language-js"><code>// Sezione Aurea (Raggio 1 metro)
+  
+begin()
+pi = 3.14159
+phi = 1.6180339887
+setSpeed(0.25,(-0.25),(pi * 2),False)
+setSpeed((1 / (2 * phi)),(-0.5),pi,False)
+setSpeed((1 / (2 * phi ** 2)),(-0.5),pi,False)
+setSpeed((1 / (2 * phi ** 3)),(-0.5),pi,False)
+setSpeed((1 / (2 * phi ** 4)),(-0.5),pi,False)
+end()</code></pre>
+
+<pre class="language-js"><code>// Infinito
+
+pi = None
+
+begin()
+pi = 3.14159
+setSpeed(0.9,0.3,20.94,False)
+setSpeed(0.9,NaN,20.94,False)
+end()</code></pre>
+
+<pre class="language-js"><code>// Obstacle Avoidance 1.0
 
 import random
 
@@ -95,7 +268,7 @@ while marrtino_ok():
             left(1)
 end() </code></pre>
 
-<pre class="language-js"><code>// Obstacle Avoidance 2
+<pre class="language-js"><code>// Obstacle Avoidance 2.0
 
 import random
 
@@ -106,7 +279,23 @@ if (obstacle_distance(0)) > 3:
 else:
     turn((random.randint(60,270)))
 end()</code></pre>
-        
+
+<pre class="language-js"><code>// Obstacle Avoidance 3.0
+
+begin()
+while marrtino_ok():
+  for count in range(2):
+    while not (obstacle_distance(0)) < 0.8:
+      setSpeed(0.5,0,1,False)
+    if (obstacle_distance(0)) < 0.8:
+      right(1)
+  for count2 in range(2):
+    while not (obstacle_distance(0)) < 0.8:
+      setSpeed(0.5,0,1,False)
+    if (obstacle_distance(0)) < 0.8:
+      left(1)
+end()</code></pre>
+  
   
          
   
